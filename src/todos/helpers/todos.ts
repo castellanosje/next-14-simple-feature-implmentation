@@ -9,7 +9,6 @@ export const updateTodo = async(id:string, complete:boolean):Promise<Todo>=>{
             'Content-type':'application/json'
         }
     }).then(res => res.json());
-    console.log(todo);
     return todo;
 }
 
@@ -24,7 +23,6 @@ export const createTodo = async (
       "Content-type": "application/json",
     },
   }).then((res) => res.json());
-  console.log(todo);
   return todo;
 };
 

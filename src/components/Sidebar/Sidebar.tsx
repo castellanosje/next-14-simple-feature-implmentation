@@ -1,24 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CiBookmarkCheck, CiLogout } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
+import { BsClipboard2Check } from "react-icons/bs";
+import { LiaCookieBiteSolid } from "react-icons/lia";
+import { RxDashboard } from "react-icons/rx";
+import { HiOutlineServerStack } from "react-icons/hi2";
 import { SidebarItem } from "./SidebarItem";
+import { IoBasketOutline } from "react-icons/io5";
 
 const sidebarItems = [
   {
     text: "Dashboard",
     path: "/dashboard",
-    icon: <CiBookmarkCheck size={30} />,
+    icon: <RxDashboard size={30} />,
   },
   {
     text: "REST Todos",
     path: "/dashboard/rest-todos",
-    icon: <CiBookmarkCheck size={30} />,
+    icon: <BsClipboard2Check size={30} />,
+  },
+  {
+    text: "Server Actions",
+    path: "/dashboard/server-todos",
+    icon: <HiOutlineServerStack size={30} />,
+  },
+  {
+    text: "Cookies",
+    path: "/dashboard/cookies",
+    icon: <LiaCookieBiteSolid size={30} />,
+  },
+  {
+    text: "Products",
+    path: "/dashboard/products",
+    icon: <IoBasketOutline size={30} />,
   },
 ];
 
 export const Sidebar = () => {
   return (
-    <aside className="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
+    <aside className="ml-[-100%] overflow-y-auto fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
       <div>
         <div className="-mx-6 px-6 py-4">
           <Link href="/dashboard" title="home">
