@@ -35,7 +35,7 @@ export const TabBar = ({
           />
           <label
             onClick={() => handleTabSelect(tab)}
-            className=" transition-all bloconsoleck cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+            className=" transition-all block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
           >
             {tab}
           </label>

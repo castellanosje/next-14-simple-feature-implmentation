@@ -1,5 +1,5 @@
 
-import { ItemCard } from "@/app/shopping-cart";
+import { ItemCard } from "@/shopping-cart";
 import { SimpleWidget } from "@/components";
 import { Product, products } from "@/products/data/products";
 import { cookies } from "next/headers";

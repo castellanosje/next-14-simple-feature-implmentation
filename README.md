@@ -20,6 +20,9 @@ npx prisma generate
 `````
 * 5. ejecutar el SEED para [crear la base de datos local](http://localhost:3000/api/seed)
 
+##Nota: Usuario por defecto
+user: test1@google.com
+password: test1
 
 # Prisma commands
 

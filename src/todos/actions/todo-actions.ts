@@ -1,7 +1,9 @@
 'use server';
+import { getUserSessionServer } from '@/auth/actions/auth-actions';
 import prisma from '@/lib/prisma';
 import { Todo } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 export const sleep = async(seconds:number)=>{
     return new Promise(resolve => {
@@ -11,9 +13,11 @@ export const sleep = async(seconds:number)=>{
     });
 }
 export const toggleTodo = async(id:string, complete:boolean):Promise<Todo> =>{
+    const user = await getUserSessionServer();
+    if (!user) return redirect("/api/auth/signin");
     await sleep(3);
 
-    const todo = await prisma.todo.findFirst({where:{id}});
+    const todo = await prisma.todo.findFirst({where:{id, userId:user.id}});
     if(!todo){
         throw `Todo con id: ${id} no encontrado`;
     }
@@ -32,8 +36,12 @@ export const toggleTodo = async(id:string, complete:boolean):Promise<Todo> =>{
 export const createTodo = async (
   description: string
 ): Promise<Todo | { message: string }> => {
+  const user = await getUserSessionServer();
+  if(!user) return redirect("/api/auth/signin");
   try {
-    const newTodo = await prisma.todo.create({ data: { description } });
+    const newTodo = await prisma.todo.create({
+      data: { description, userId: user.id },
+    });
 
     revalidatePath("/dashboard/server-todos");
 
@@ -46,8 +54,10 @@ export const createTodo = async (
 };
 
 export const deleteTodo = async (): Promise<boolean> => {
+  const user = await getUserSessionServer();
+  if (!user) return redirect("/api/auth/signin");
   try {
-    await prisma.todo.deleteMany({ where: { complete:true } });
+    await prisma.todo.deleteMany({ where: { complete:true, userId:user.id } });
 
     revalidatePath("/dashboard/server-todos");
 

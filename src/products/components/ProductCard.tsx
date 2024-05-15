@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { IoAddCircleOutline, IoTrashOutline } from "react-icons/io5";
 import { Star } from "./Star";
-import { productExistInCart, removeProductFromCart } from "@/app/shopping-cart/actions";
+import { productExistInCart, removeProductFromCart } from "@/shopping-cart/actions";
 import { useEffect, useState } from "react";
 
 

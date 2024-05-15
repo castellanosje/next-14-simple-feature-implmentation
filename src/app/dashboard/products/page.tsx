@@ -1,6 +1,6 @@
 import { ProductCard } from "@/products";
 import { products } from "@/products/data/products";
-import { addProductToCart } from '../../shopping-cart/actions';
+import { addProductToCart } from '../../../shopping-cart/actions';
 
 export default function ProductsPage() {
   return (
